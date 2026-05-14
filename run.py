@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Chinese License Plate Recognition — CLI & Server
+"""车牌识别系统入口——同时支持 Web 服务和命令行模式。
 
-Usage:
-  python run.py                       # start web server (localhost:8000)
-  python run.py predict <image>       # recognize plate from image file
-  python run.py predict <image> -o    # also save annotated image
+用法:
+  python run.py                       # 启动 Web 服务器，访问 http://localhost:8000
+  python run.py predict <图片路径>     # 命令行模式，直接识别指定图片
+
+命令行模式使用说明:
+  predict 子命令接收一张图片，输出检测结果到终端，
+  同时在当前目录下生成 annotated_<原文件名>.jpg 标注图。
 """
 import argparse
 import sys
@@ -12,7 +15,7 @@ from pathlib import Path
 
 import cv2
 
-# Add project root to path for direct script usage
+# 将项目根目录加入 Python 搜索路径，确保 import app 能够找到
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 
@@ -28,7 +31,8 @@ def run_server():
     )
 
 
-def run_predict(image_path: str, save_annotated: bool = False):
+def run_predict(image_path: str):
+    """命令行模式：读取图片 → 检测 → 识别 → 终端输出结果并保存标注图。"""
     from app.detector import annotate_image, detect_plate
     from app.recognizer import get_recognizer
 
@@ -40,7 +44,7 @@ def run_predict(image_path: str, save_annotated: bool = False):
     print(f"图片: {image_path}  ({img.shape[1]}x{img.shape[0]})")
     print()
 
-    detected, warped, box, candidate, reason = detect_plate(img)
+    detected, warped, box, _, reason = detect_plate(img)
 
     if not detected or warped is None:
         print(f"车牌检测: 失败")
@@ -56,15 +60,9 @@ def run_predict(image_path: str, save_annotated: bool = False):
     print(f"检测耗时:  {reason}")
 
     if box is not None and plate_text:
-        if save_annotated:
-            out_path = f"annotated_{Path(image_path).stem}.jpg"
-            annotate_image(img, box, plate_text, Path(out_path))
-            print(f"标注图片: {out_path}")
-        else:
-            # always save so the user can see it
-            out_path = f"annotated_{Path(image_path).stem}.jpg"
-            annotate_image(img, box, plate_text, Path(out_path))
-            print(f"标注图片: {out_path}")
+        out_path = f"annotated_{Path(image_path).stem}.jpg"
+        annotate_image(img, box, plate_text, Path(out_path))
+        print(f"标注图片: {out_path}")
 
 
 def main():
@@ -85,7 +83,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "predict":
-        run_predict(args.image, save_annotated=True)
+        run_predict(args.image)
     else:
         run_server()
 

@@ -1,4 +1,4 @@
-# 车牌识别系统
+# 基于 OpenCV 与 PaddleOCR 的车牌识别系统
 
 基于 OpenCV + PaddleOCR 的中国蓝牌车牌检测与识别系统，支持 Web 上传识别和本地命令行识别。
 
