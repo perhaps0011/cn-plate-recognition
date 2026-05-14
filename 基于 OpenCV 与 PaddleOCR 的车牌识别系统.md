@@ -37,7 +37,7 @@
 ### 三、项目结构
 
 ```
-vision/
+cn-plate-recognition/
 ├── run.py                  # 入口：CLI 模式 or Web 服务
 ├── app/
 │   ├── config.py           # 所有可调参数集中管理

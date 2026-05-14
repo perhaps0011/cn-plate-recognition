@@ -6,8 +6,8 @@ from pathlib import Path
 import markdown
 from playwright.async_api import async_playwright
 
-md_path = Path(__file__).resolve().parent / "项目报告.md"
-pdf_path = Path(__file__).resolve().parent / "项目报告.pdf"
+md_path = Path(__file__).resolve().parent / "基于 OpenCV 与 PaddleOCR 的车牌识别系统.md"
+pdf_path = Path(__file__).resolve().parent / "基于 OpenCV 与 PaddleOCR 的车牌识别系统.pdf"
 
 md_content = md_path.read_text(encoding="utf-8")
 
@@ -23,12 +23,10 @@ html_body = markdown.markdown(
 )
 
 github_css = """
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap');
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', '微软雅黑', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #24292f;
@@ -134,7 +132,7 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
-        await page.goto(f"file://{tmp_path}", wait_until="networkidle")
+        await page.goto(f"file://{tmp_path}", wait_until="load")
         await page.pdf(
             path=str(pdf_path),
             format="A4",
