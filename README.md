@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 **命令行识别：**
 ```bash
-python run.py predict 车牌图片.jpg
+python run.py predict model/test_2.jpg
 ```
 
 **启动 Web 服务：**
@@ -63,6 +63,8 @@ python run.py predict 车牌图片.jpg
 python run.py
 # 访问 http://localhost:8000
 ```
+
+项目 `model/` 目录下提供了示例图片可用于测试。
 
 ## 检测策略
 

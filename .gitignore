@@ -8,3 +8,5 @@ server.log
 .DS_Store
 .claude/
 plate_test.jpg
+*.pdf
+*.docx

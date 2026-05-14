@@ -14,6 +14,8 @@
 
 **技术栈**：Python + OpenCV（图像处理）+ PaddleOCR（文字识别）+ FastAPI（Web 框架）+ 纯 HTML/CSS/JS（前端）
 
+![Web 界面预览](model/test_1.png)
+
 ---
 
 ### 二、技术选型
@@ -75,6 +77,8 @@ PaddleOCR PP-OCRv4 字符识别
     ↓
 前端渲染结果 + 自动保存原图到图库
 ```
+
+![识别结果截图](model/result_1.png)
 
 这趟流程串起了 Python 开发的核心场景：文件 I/O、第三方库调用、HTTP 通信、JSON 序列化、异步任务。
 
