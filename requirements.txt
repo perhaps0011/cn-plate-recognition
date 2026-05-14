@@ -1,0 +1,8 @@
+opencv-python>=4.8.0
+numpy>=1.21.0
+Pillow>=9.0.0
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+python-multipart>=0.0.5
+paddlex[ocr-core]>=3.5.0
+paddlepaddle>=3.3.0
