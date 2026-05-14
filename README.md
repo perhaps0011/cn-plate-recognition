@@ -39,8 +39,8 @@ vision/
 
 ```bash
 # 克隆项目
-git clone https://github.com/perhaps0011/vision.git
-cd vision
+git clone https://github.com/perhaps0011/cn-plate-recognition.git
+cd cn-plate-recognition
 
 # 创建虚拟环境
 python3 -m venv venv

@@ -118,6 +118,6 @@ PaddleOCR PP-OCRv4 字符识别
 
 通过这个项目，我完整走了一遍 Python Web 应用从开发到上线的流程：后端 API 设计 → 算法模块集成 → 前端交互 → 服务器部署。虽然车牌识别本身不是新东西，但亲手把每个环节跑通、解决实际部署中遇到的问题，才是这门课最大的收获。
 
-**项目地址**：[https://github.com/perhaps0011/vision](https://github.com/perhaps0011/vision)
+**项目地址**：[https://github.com/perhaps0011/cn-plate-recognition](https://github.com/perhaps0011/cn-plate-recognition)
 
 **在线体验**：[http://farvoy.top](http://farvoy.top)
